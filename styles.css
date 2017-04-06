@@ -1,0 +1,33 @@
+.login-box {
+    width: 360px;
+    margin: 7% auto;
+}
+
+.login-logo{
+    font-size: 35px;
+    text-align: center;
+    margin-bottom: 25px;
+    font-weight: 300;
+}
+
+.login-box-body {
+    background: #fff;
+    padding: 20px;
+    border-top: 0;
+    color: #666;
+}
+
+.btn-dashboard {
+    color: #fff;
+    background-color: #3C8DBC;
+    border-color: #3C8DBC;
+}
+
+/*bootstrap override*/
+.btn{
+    border-radius: 0;
+}
+
+.form-control{
+    border-radius: 0;
+}

@@ -1,21 +1,42 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <!--<meta charset="utf-8">-->
-    <!--<meta http-equiv="X-UA-Compatible" content="IE=edge">-->
-    <!--<meta name="viewport" content="width=device-width, initial-scale=1">-->
-    <!--<title>Rehive</title>-->
-
-    <!--<link href='https://fonts.googleapis.com/css?family=Roboto:400,100,100italic,300,300italic,400italic,500,500italic,700,700italic,900italic,900&subset=latin,greek,greek-ext,vietnamese,cyrillic-ext,latin-ext,cyrillic' rel='stylesheet' type='text/css'>-->
-
-    <!--<link rel="icon" type="image/png" sizes="16x16" href="assets/img/favicon-16x16.png">-->
-    <!--<link rel="icon" type="image/png" sizes="32x32" href="assets/img/favicon-32x32.png">-->
-    <!--<link rel="icon" type="image/png" sizes="96x96" href="assets/img/favicon-96x96.png">-->
-
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Change Password</title>
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js" ></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="styles.css">
 
 </head>
 <body>
+<div class="row">
+    <div class="login-box">
+        <div class="login-logo">
+            <h1>Change Password</h1>
+        </div>
+        <div class="login-box-body text-center">
+            <div class="login">
+                <div class="form-group has-feedback">
+                    <p><input id="id_new_password1" placeholder="New Password" class="form-control" type="password" name="new_password1"></p>
 
-<div>hello world</div>
+                </div>
+                <div class="form-group has-feedback">
+                    <p><input id="id_new_password2" placeholder="Password Confirmation" class="form-control" type="password" name="new_password2"></p>
+
+                </div>
+                <p id="error" style="display: none; color:red;"></p>
+                <div class="row">
+                    <div class="col-xs-4 pull-right">
+                        <button onclick="changePassword()" type="button" class="btn btn-dashboard btn-block btn-flat">Change</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 </body>
+<script type="text/javascript" src="index.js"></script>
 </html>
