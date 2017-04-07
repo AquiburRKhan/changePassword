@@ -1,7 +1,3 @@
-if(window.location.href.indexOf('?') == -1){
-window.history.replaceState(null, null,  window.location.href+ "?uid=NDUx&token=4kz-f8c949069cfe163de406");
-}
-
 function getUrlVars() {
 
     var vars = {}, hash;
@@ -15,13 +11,8 @@ function getUrlVars() {
 }
 
 function changePassword() {
-
     var new_password1 = document.getElementById('id_new_password1').value;
     var new_password2 = document.getElementById('id_new_password2').value;
-    if(new_password1 !== new_password2)
-    {
-        //return;
-    }
 
     var url = window.location.href;
     var data = getUrlVars(url);
@@ -29,30 +20,29 @@ function changePassword() {
     data.new_password1 = new_password1;
     data.new_password2 = new_password2;
 
-
-    console.log(data);
     postHttpChangePasswordRequest(data)
-
 }
 
 function postHttpChangePasswordRequest(data) {
+
+    document.getElementById('error').style.display = 'none';
+
     var url = "https://rehive.com/api/3/auth/password/reset/confirm/";
     var method = "POST";
     var postData = data;
-
     var async = true;
-
     var request = new XMLHttpRequest();
 
     request.onload = function () {
 
-        console.log(request);
-
-
-        // You can get all kinds of information about the HTTP response.
-        var status = request.status; // HTTP response status, e.g., 200 for "200 OK"
-        var data = JSON.parse(request.responseText); // Returned data, e.g., an HTML document.
-        showError(data);
+        var responseText = JSON.parse(request.responseText);
+        if(request.status == 200){
+            document.getElementById('changePasswordForm').style.display = 'none';
+            document.getElementById('successMessage').style.display = 'block';
+            document.getElementById('successMessage').innerHTML = responseText.message;
+        } else{
+            evaluateError(responseText.data);
+        }
     };
 
     request.open(method, url, async);
@@ -62,7 +52,19 @@ function postHttpChangePasswordRequest(data) {
     request.send(JSON.stringify(postData));
 }
 
+function evaluateError(errors) {
+    var errorText;
+    for(var key in errors){
+        if (errors.hasOwnProperty(key)) {
+            errors[key].forEach(function(error){
+                errorText = (key.charAt(0).toUpperCase() + key.slice(1)) + ": " + error;
+                showError(errorText)
+            })
+        }
+    }
+}
+
 function showError(error){
     document.getElementById('error').style.display = 'block';
-    document.getElementById('error').innerHTML = error.message;
+    document.getElementById('error').innerHTML = error;
 }

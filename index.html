@@ -17,7 +17,7 @@
         <div class="login-logo">
             <h1>Change Password</h1>
         </div>
-        <div class="login-box-body text-center">
+        <form id="changePasswordForm" class="login-box-body text-center">
             <div class="login">
                 <div class="form-group has-feedback">
                     <p><input id="id_new_password1" placeholder="New Password" class="form-control" type="password" name="new_password1"></p>
@@ -34,6 +34,9 @@
                     </div>
                 </div>
             </div>
+        </form>
+        <div class="login-box-body text-center">
+            <p style="display: none" id="successMessage"></p>
         </div>
     </div>
 </div>
